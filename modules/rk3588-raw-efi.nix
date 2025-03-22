@@ -12,7 +12,7 @@
 
   extraInstallCommands = ''
     mkdir -p /boot/dtb/base
-    cp -r ${config.boot.kernelPackages.kernel}/dtbs/rockchip/* /boot/dtb/base/
+    cp -r ${config.hardware.deviceTree.package}/dtbs/rockchip/* /boot/dtb/base/
     sync
   '';
 in {
