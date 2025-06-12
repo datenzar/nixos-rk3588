@@ -13,6 +13,8 @@
     ${pkgs.coreutils}/bin/sync
   '';
 in {
+  # Note that this is only needed on UEFI systems, even though we set it
+  # everywhere. It will have no effect unless `boot.loader.grub.enable = true`.
   boot.loader = {
     systemd-boot.extraInstallCommands = extraInstallCommands;
     grub.extraInstallCommands = extraInstallCommands;
