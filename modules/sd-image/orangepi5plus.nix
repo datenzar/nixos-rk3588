@@ -38,6 +38,7 @@ in {
 
     populateRootCommands = ''
       mkdir -p ./files/boot
+      mkdir -p ./files/boot/firmware
     '';
   };
 }
