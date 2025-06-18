@@ -41,7 +41,7 @@ U-Boot support:
   - [x] gpio
   - [x] uart/ttl
   - [x] gpu(mali-g610-firmware + panthor)
-  - [ ] npu
+  - [x] npu (works with [rkllama](https://github.com/NotPunchnox/rkllama), tested on OPi 5 Plus)
   - ...
 
 ## Flash & Boot NixOS
