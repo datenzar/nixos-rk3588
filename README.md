@@ -27,7 +27,7 @@ U-Boot support:
 | Singal Board Computer | Boot from SD card  | Boot from SSD      |
 | --------------------- | ------------------ | ------------------ |
 | Orange Pi 5           | :heavy_check_mark: | :heavy_check_mark: |
-| Orange Pi 5 Plus      | :heavy_check_mark: | :no_entry_sign:    |
+| Orange Pi 5 Plus      | :heavy_check_mark: | :heavy_check_mark: |
 | Rock 5A               | :heavy_check_mark: | :no_entry_sign:    |
 
 ## TODO
@@ -46,9 +46,23 @@ U-Boot support:
 
 ## Flash & Boot NixOS
 
-For UEFI, see [UEFI.md](./UEFI.md).
+The SD card images built using this flake do not embed a bootloader,
+  and won't boot directly on a new board
+  (unlike Armbian images that do embed U-Boot and just run out of the box).
+You have to manually install a bootloader (UEFI or U-Boot) into the SPI flash of your board.
+To do that, you boot into an Armbian image and write a precompiled bootloader image into your SPI block device under `/dev`
+  — detailed instructions are given under links below.
+Once a bootloader is in SPI, you can boot NixOS images from this repo
+  (although make sure your NixOS config is set to use the right bootloader).
 
-For U-Boot, see [U-Boot.md](./U-Boot.md).
+This flake supports UEFI and U-Boot, here are the install steps:
+
+- [UEFI.md](./UEFI.md)
+- [U-Boot.md](./U-Boot.md)
+
+I personally recommend running U-Boot, as our support for UEFI has known bugs (https://github.com/gnull/nixos-rk3588/issues/1).
+
+Feel free to drop a testing report in the associated [discussions page](https://github.com/gnull/nixos-rk3588/discussions/2).
 
 ## Debug via serial port(UART)
 
