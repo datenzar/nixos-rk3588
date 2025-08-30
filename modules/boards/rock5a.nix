@@ -1,20 +1,18 @@
 # =========================================================================
 #      Rock 5 Model A Specific Configuration
 # =========================================================================
-{rk3588, ...}: let
-  pkgsKernel = rk3588.pkgsKernel;
-in {
+{pkgs, lib, ...}: {
   imports = [
     ./base.nix
     ./dtb-install.nix
   ];
 
   boot = {
-    kernelPackages = pkgsKernel.linuxPackagesFor (pkgsKernel.callPackage ../../pkgs/kernel/vendor.nix {});
+    kernelPackages = pkgs.linuxPackages_6_15;
 
     # kernelParams copy from rock5a's official debian image's /boot/extlinux/extlinux.conf
     # https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html
-    kernelParams = [
+    kernelParams = lib.mkBefore [
       "rootwait"
       "rw" # load rootfs as read-write
 
