@@ -3,19 +3,21 @@
 # =========================================================================
 {
   pkgs,
-  lib,
+  rk3588,
   ...
-}: {
+}: let
+  pkgsKernel = rk3588.pkgsKernel;
+in {
   imports = [
     ./base.nix
     ./dtb-install.nix
   ];
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_6_15;
+    kernelPackages = pkgsKernel.linuxPackagesFor (pkgsKernel.callPackage ../../pkgs/kernel/vendor.nix {});
 
     # kernelParams copy from Armbian's /boot/armbianEnv.txt & /boot/boot.cmd
-    kernelParams = lib.mkBefore [
+    kernelParams = [
       "rootwait"
 
       "earlycon" # enable early console, so we can see the boot messages via serial port / HDMI
