@@ -73,6 +73,11 @@
             core = import ./modules/boards/orangepi5pro.nix;
             sd-image = ./modules/sd-image/orangepi5pro.nix;
           };
+          # Orange Pi 5 Max SBC
+          orangepi5max = {
+            core = import ./modules/boards/orangepi5max.nix;
+            sd-image = ./modules/sd-image/orangepi5max.nix;
+          };
           # Rock 5 Model A SBC
           rock5a = {
             core = import ./modules/boards/rock5a.nix;
@@ -176,18 +181,21 @@
         sdImage-opi5b = self.nixosConfigurations.orangepi5b.config.system.build.sdImage;
         sdImage-opi5plus = self.nixosConfigurations.orangepi5plus.config.system.build.sdImage;
         sdImage-opi5pro = self.nixosConfigurations.orangepi5pro.config.system.build.sdImage;
+        sdImage-opi5max = self.nixosConfigurations.orangepi5max.config.system.build.sdImage;
         sdImage-rock5a = self.nixosConfigurations.rock5a.config.system.build.sdImage;
 
         sdImage-opi5-cross = self.nixosConfigurations.orangepi5-cross.config.system.build.sdImage;
         sdImage-opi5b-cross = self.nixosConfigurations.orangepi5b-cross.config.system.build.sdImage;
         sdImage-opi5plus-cross = self.nixosConfigurations.orangepi5plus-cross.config.system.build.sdImage;
         sdImage-opi5pro-cross = self.nixosConfigurations.orangepi5pro-cross.config.system.build.sdImage;
+        sdImage-opi5max-cross = self.nixosConfigurations.orangepi5max-cross.config.system.build.sdImage;
         sdImage-rock5a-cross = self.nixosConfigurations.rock5a-cross.config.system.build.sdImage;
 
         # UEFI raw image
         rawEfiImage-opi5 = self.nixosConfigurations.orangepi5-uefi.config.formats.rk3588-raw-efi;
         rawEfiImage-opi5plus = self.nixosConfigurations.orangepi5plus-uefi.config.formats.rk3588-raw-efi;
         rawEfiImage-opi5pro = self.nixosConfigurations.orangepi5pro-uefi.config.formats.rk3588-raw-efi;
+        rawEfiImage-opi5max = self.nixosConfigurations.orangepi5max-uefi.config.formats.rk3588-raw-efi;
         rawEfiImage-rock5a = self.nixosConfigurations.rock5a-uefi.config.formats.rk3588-raw-efi;
       };
 
